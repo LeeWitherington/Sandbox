@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MVPDemo.IPresenter;
+using MVPDemo.Utility;
 // //------------------------------------------------------------------------------
 // // Code disclaimer information
 // // This document contains programming examples.
@@ -7,27 +7,17 @@ using System.Collections.Generic;
 // // All programs contained herein are provided to you "AS IS" without any warranties of any kind.
 // //------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Text;
-using MVPDemo.IPresenter;
-using Microsoft.Practices.Unity;
-using MVPDemo.Utility;
-
-namespace MVPDemo.ProcessFlowControl
-{
-    public class Controller
-    {
-        private IOrderTimeRangeQueryPresenter _orderTimeRangeQueryPresenter;
+namespace MVPDemo.ProcessFlowControl {
+    public class Controller {
         private IMainPresenter _mainPresenter;
+        private IOrderTimeRangeQueryPresenter _orderTimeRangeQueryPresenter;
 
-        public Controller(IOrderTimeRangeQueryPresenter presenter)
-        {
+        public Controller(IOrderTimeRangeQueryPresenter presenter) {
             _orderTimeRangeQueryPresenter = presenter;
             _orderTimeRangeQueryPresenter.Search += (OnQuerySearch);
         }
 
-        public Controller(IMainPresenter presenter)
-        {
+        public Controller(IMainPresenter presenter) {
             _mainPresenter = presenter;
             _mainPresenter.SelectRegion += (OnSelectRegion);
             _mainPresenter.SelectCustomer += (OnSelectCustomer);
@@ -35,8 +25,8 @@ namespace MVPDemo.ProcessFlowControl
         }
 
         #region Event handler to handle events raised from Presenter
-        private void OnQuerySearch(object sender, OrderTimeRangeQueryEventArgs e)
-        {
+
+        private void OnQuerySearch(object sender, OrderTimeRangeQueryEventArgs e) {
             IUnityContainer container = CacheSingleton.Instance.GetUnityContainer();
             _mainPresenter = container.Resolve<IMainPresenter>();
             _mainPresenter.OpenView();
@@ -44,25 +34,23 @@ namespace MVPDemo.ProcessFlowControl
             _orderTimeRangeQueryPresenter.CloseView();
         }
 
-        private void OnSelectRegion(object sender, RegionSelectedEventArgs e)
-        {
+        private void OnSelectRegion(object sender, RegionSelectedEventArgs e) {
             //This event doesn't cause the switch to different flow control
             _mainPresenter.HandleSelectRegionEvent();
         }
 
-        private void OnRetrieveRegions(object sender, RetrieveRegionsEventArgs e)
-        {
+        private void OnRetrieveRegions(object sender, RetrieveRegionsEventArgs e) {
             //This event doesn't cause the switch to different flow control
             _mainPresenter.HandleRetrieveRegionsEvent();
         }
 
-        private void OnSelectCustomer(object sender, CustomerSelectedEventArgs e)
-        {
+        private void OnSelectCustomer(object sender, CustomerSelectedEventArgs e) {
             IUnityContainer container = CacheSingleton.Instance.GetUnityContainer();
             _orderTimeRangeQueryPresenter = container.Resolve<IOrderTimeRangeQueryPresenter>();
             _orderTimeRangeQueryPresenter.OpenView();
             container.RegisterInstance<IMainPresenter>(_mainPresenter);
         }
+
         #endregion
     }
 }

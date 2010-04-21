@@ -6,18 +6,12 @@
 // //------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace MVPDemo.IView
-{
-    public interface IOrderTimeRangeQueryView
-    {
+namespace MVPDemo.IView {
+    public interface IOrderTimeRangeQueryView {
         DateTime SearchQueryFrom { get; }
         DateTime SearchQueryTo { get; }
         void ShowView();
         void CloseView();
-
     }
 }

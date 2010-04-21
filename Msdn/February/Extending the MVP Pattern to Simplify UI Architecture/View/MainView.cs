@@ -7,102 +7,74 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using MVPDemo.Presenter;
-using UIModel = MVPDemo.UIModel;
 using MVPDemo.IView;
+using MVPDemo.Presenter;
+using MVPDemo.UIModel;
 
-namespace MVPDemo.View
-{
-    public partial class MainView : Form, IMainView
-    {
+namespace MVPDemo.View {
+    public partial class MainView : Form, IMainView {
+        private readonly BindingSource _bindingSource = new BindingSource();
+        private Customer _customer;
+        private List<Customer> _customerCandidates;
+        private List<Order> _orders;
         private MainPresenter _presenter;
-        private UIModel.Region _region;
-        private UIModel.Customer _customer;
-        private List<UIModel.Order> _orders;
-        private List<UIModel.Region> _regionCandidates;
-        private List<UIModel.Customer> _customerCandidates;
-        private BindingSource _bindingSource = new BindingSource();
+        private Region _region;
+        private List<Region> _regionCandidates;
 
-        public MainView()
-        {
+        public MainView() {
             InitializeComponent();
-        }
-
-        private void MainView_Load(object sender, EventArgs e)
-        {
-            _presenter = new MainPresenter(this);
-            _presenter.OnRetrieveRegionCandidates();
         }
 
         #region IMainView Members
 
-        public UIModel.Region SelectedRegion
-        {
-            get
-            {
-                return _region;
-            } 
+        public Region SelectedRegion {
+            get { return _region; }
         }
-        
-        public UIModel.Customer SelectedCustomer
-        { 
-            get
-            {
-                return _customer;
-            }
+
+        public Customer SelectedCustomer {
+            get { return _customer; }
         }
-        
-        public List<UIModel.Order> Orders 
-        {
-            set
-            {
+
+        public List<Order> Orders {
+            set {
                 _orders = value;
                 PopulateOrdersGrid();
             }
         }
 
-        public List<UIModel.Region> RegionCandidates
-        {
-            set
-            {
+        public List<Region> RegionCandidates {
+            set {
                 _regionCandidates = value;
                 PopulateRegionCandidates();
             }
         }
 
-        public List<UIModel.Customer> CustomerCandidates
-        {
-            set
-            {
+        public List<Customer> CustomerCandidates {
+            set {
                 _customerCandidates = value;
                 PopulateCustomerCandidates();
             }
         }
 
-        public void ShowView()
-        {
-            this.Show();
+        public void ShowView() {
+            Show();
         }
 
-        public void CloseView()
-        {
-            this.Hide();
+        public void CloseView() {
+            Hide();
         }
 
         #endregion
 
-        private void cboRegion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            for (int i = 0; i < _regionCandidates.Count; i++)
-            {
-                if (_regionCandidates[i].Name == cboRegionList.SelectedItem.ToString ())
-                {
+        private void MainView_Load(object sender, EventArgs e) {
+            _presenter = new MainPresenter(this);
+            _presenter.OnRetrieveRegionCandidates();
+        }
+
+        private void cboRegion_SelectedIndexChanged(object sender, EventArgs e) {
+            for (int i = 0; i < _regionCandidates.Count; i++) {
+                if (_regionCandidates[i].Name == cboRegionList.SelectedItem.ToString()) {
                     _region = _regionCandidates[i];
 
                     i = _regionCandidates.Count;
@@ -111,43 +83,30 @@ namespace MVPDemo.View
             _presenter.OnRegionSelected();
         }
 
-        private void cboCustomerList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            for (int i = 0; i < _customerCandidates.Count; i++)
-            {
-                if (_customerCandidates[i].Name == cboCustomerList.SelectedItem.ToString ())
-                {
+        private void cboCustomerList_SelectedIndexChanged(object sender, EventArgs e) {
+            for (int i = 0; i < _customerCandidates.Count; i++) {
+                if (_customerCandidates[i].Name == cboCustomerList.SelectedItem.ToString()) {
                     _customer = _customerCandidates[i];
 
                     i = _customerCandidates.Count;
                 }
             }
-            _presenter.OnCustomerSelected ();
+            _presenter.OnCustomerSelected();
         }
 
-        private void PopulateCustomerCandidates()
-        {
+        private void PopulateCustomerCandidates() {
             for (int i = 0; i < _customerCandidates.Count; i++)
-            {
                 cboCustomerList.Items.Add(_customerCandidates[i].Name);
-            }
         }
 
-        private void PopulateRegionCandidates()
-        {
+        private void PopulateRegionCandidates() {
             for (int i = 0; i < _regionCandidates.Count; i++)
-            {
                 cboRegionList.Items.Add(_regionCandidates[i].Name);
-            }
         }
 
-        private void PopulateOrdersGrid()
-        {
+        private void PopulateOrdersGrid() {
             gridorderHistory.Rows.Clear();
-            for (int i = 0; i < _orders.Count; i++)
-            {
-                _bindingSource.Add(_orders[i]);
-            }
+            foreach (Order t in _orders) _bindingSource.Add(t);
             gridorderHistory.DataSource = _bindingSource;
         }
     }

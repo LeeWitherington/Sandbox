@@ -6,30 +6,19 @@
 // //------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using MVPDemo.UIModel;
 
-namespace MVPDemo.IPresenter
-{
-    public class CustomerSelectedEventArgs: EventArgs
-    {
+namespace MVPDemo.IPresenter {
+    public class CustomerSelectedEventArgs : EventArgs {
         private Customer _selectedCustomer;
 
-        public CustomerSelectedEventArgs(Customer selectedCustomer)
-        {
+        public CustomerSelectedEventArgs(Customer selectedCustomer) {
             _selectedCustomer = selectedCustomer;
         }
 
-        public Customer SelectedCustomer
-        {
-            get
-            {
-                return _selectedCustomer;
-            }
-            set
-            {
+        public Customer SelectedCustomer {
+            get { return _selectedCustomer; }
+            set {
                 if (_selectedCustomer == value)
                     return;
                 _selectedCustomer = value;

@@ -5,22 +5,16 @@
 // // All programs contained herein are provided to you "AS IS" without any warranties of any kind.
 // //------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using MVPDemo.UIModel;
 
-namespace MVPDemo.ServiceAgent
-{
-    public class CustomerAdminServiceAgent
-    {
-        public List<Customer> RetrieveCustomers(Region selectedRegion)
-        {
+namespace MVPDemo.ServiceAgent {
+    public class CustomerAdminServiceAgent {
+        public List<Customer> RetrieveCustomers(Region selectedRegion) {
             //Not to call real service. Mock up data here
-            List<Customer> customers = new List<Customer>();
+            var customers = new List<Customer>();
 
-            Customer customer = new Customer();
+            var customer = new Customer();
             customer.Name = "John";
             customers.Add(customer);
 

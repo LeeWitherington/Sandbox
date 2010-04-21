@@ -6,65 +6,15 @@
 // //------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace MVPDemo.UIModel
-{
-    public class Order
-    {
-        int _orderID;
-        string _status;
-        decimal _totalPrice;
-        DateTime _orderDate;
+namespace MVPDemo.UIModel {
+    public class Order {
+        public int OrderID { get; set; }
 
-        public int OrderID
-        {
-            get
-            {
-                return _orderID;
-            }
-            set
-            {
-                _orderID = value;
-            }
-        }
+        public string Status { get; set; }
 
-        public string Status
-        {
-            get
-            {
-                return _status;
-            }
-            set
-            {
-                _status = value;
-            }
-        }
- 
-        public decimal TotalPrice
-        {
-            get
-            {
-                return _totalPrice;
-            }
-            set
-            {
-                _totalPrice = value;
-            }
-        }
+        public decimal TotalPrice { get; set; }
 
-        public DateTime OrderDate
-        {
-            get
-            {
-                return _orderDate;
-            }
-            set
-            {
-                _orderDate = value;
-            }
-        }
+        public DateTime OrderDate { get; set; }
     }
 }

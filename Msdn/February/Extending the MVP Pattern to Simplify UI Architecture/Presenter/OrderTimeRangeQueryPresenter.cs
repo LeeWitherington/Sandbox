@@ -6,50 +6,38 @@
 // //------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using MVPDemo.IPresenter;
 using MVPDemo.IView;
 using MVPDemo.ProcessFlowControl;
-using System.Reflection;
 
-namespace MVPDemo.Presenter
-{
-    public class OrderTimeRangeQueryPresenter:IOrderTimeRangeQueryPresenter
-    { 
+namespace MVPDemo.Presenter {
+    public class OrderTimeRangeQueryPresenter : IOrderTimeRangeQueryPresenter {
         private readonly IOrderTimeRangeQueryView _view;
         private Controller _controller;
-        
+        public OrderTimeRangeQueryPresenter() {}
+
+        public OrderTimeRangeQueryPresenter(IOrderTimeRangeQueryView view) {
+            _view = view;
+            _controller = new Controller(this);
+        }
+
         #region IOrderTimeRangeQueryPresenter Members
 
         public event EventHandler<OrderTimeRangeQueryEventArgs> Search;
 
-        public void OpenView()
-        {
+        public void OpenView() {
             _view.ShowView();
         }
 
-        public void CloseView()
-        {
+        public void CloseView() {
             _view.CloseView();
         }
 
         #endregion
 
-        public OrderTimeRangeQueryPresenter() { }
-        public OrderTimeRangeQueryPresenter(IOrderTimeRangeQueryView view)
-        {
-            _view = view;
-            _controller = new Controller(this);
-        }
-
-        public void OnQuerySubmitted()
-        {
+        public void OnQuerySubmitted() {
             if (Search != null)
-            {
                 Search(this, new OrderTimeRangeQueryEventArgs(_view.SearchQueryFrom, _view.SearchQueryTo));
-            }
         }
     }
 }

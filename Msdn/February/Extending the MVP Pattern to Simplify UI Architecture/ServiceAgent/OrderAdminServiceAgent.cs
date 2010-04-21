@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using MVPDemo.UIModel;
 // //------------------------------------------------------------------------------
 // // Code disclaimer information
 // // This document contains programming examples.
@@ -6,21 +8,13 @@
 // // All programs contained herein are provided to you "AS IS" without any warranties of any kind.
 // //------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MVPDemo.UIModel;
-
-namespace MVPDemo.ServiceAgent
-{
-    public class OrderAdminServiceAgent
-    {
-        public List<Order> RetrieveOrders(Customer selectedCustomer, DateTime queryFrom, DateTime queryTo)
-        {
+namespace MVPDemo.ServiceAgent {
+    public class OrderAdminServiceAgent {
+        public List<Order> RetrieveOrders(Customer selectedCustomer, DateTime queryFrom, DateTime queryTo) {
             //Not to call real service. Mock up data here
-            List<Order> orders = new List<Order>();
+            var orders = new List<Order>();
 
-            Order order = new Order();
+            var order = new Order();
             order.OrderID = 1;
             order.Status = "Fulfilled";
             order.TotalPrice = 100.00M;

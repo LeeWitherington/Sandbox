@@ -5,27 +5,8 @@
 // // All programs contained herein are provided to you "AS IS" without any warranties of any kind.
 // //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace MVPDemo.UIModel
-{
-    public class Region
-    {
-        string _name;
-
-        public string Name
-        {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                _name = value;
-            }
-        }
+namespace MVPDemo.UIModel {
+    public class Region {
+        public string Name { get; set; }
     }
 }

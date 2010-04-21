@@ -6,45 +6,29 @@
 // //------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace MVPDemo.IPresenter
-{
-    public class OrderTimeRangeQueryEventArgs : EventArgs
-    {
+namespace MVPDemo.IPresenter {
+    public class OrderTimeRangeQueryEventArgs : EventArgs {
         private DateTime _queryFrom;
         private DateTime _queryTo;
 
-        public OrderTimeRangeQueryEventArgs(DateTime queryFrom, DateTime queryTo)
-        {
+        public OrderTimeRangeQueryEventArgs(DateTime queryFrom, DateTime queryTo) {
             _queryFrom = queryFrom;
             _queryTo = queryTo;
         }
 
-        public DateTime QueryFrom
-        {
-            get
-            {
-                return _queryFrom;
-            }
-            set
-            {
+        public DateTime QueryFrom {
+            get { return _queryFrom; }
+            set {
                 if (_queryFrom == value)
                     return;
                 _queryFrom = value;
             }
         }
 
-        public DateTime QueryTo
-        {
-            get
-            {
-                return _queryTo;
-            }
-            set
-            {
+        public DateTime QueryTo {
+            get { return _queryTo; }
+            set {
                 if (_queryTo == value)
                     return;
                 _queryTo = value;

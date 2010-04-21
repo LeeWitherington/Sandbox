@@ -5,23 +5,17 @@
 // // All programs contained herein are provided to you "AS IS" without any warranties of any kind.
 // //------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using MVPDemo.UIModel;
 
-namespace MVPDemo.IView
-{
-    public interface IMainView
-    {
-        Region SelectedRegion { get;}
+namespace MVPDemo.IView {
+    public interface IMainView {
+        Region SelectedRegion { get; }
         Customer SelectedCustomer { get; }
         List<Order> Orders { set; }
         List<Region> RegionCandidates { set; }
         List<Customer> CustomerCandidates { set; }
-        void ShowView ();
+        void ShowView();
         void CloseView();
-
     }
 }

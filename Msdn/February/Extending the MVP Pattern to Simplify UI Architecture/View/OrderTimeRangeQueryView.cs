@@ -6,64 +6,44 @@
 // //------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using MVPDemo.Presenter;
 using MVPDemo.IView;
+using MVPDemo.Presenter;
 
-namespace MVPDemo.View
-{
-    public partial class OrderTimeRangeQueryView : Form, IOrderTimeRangeQueryView
-    {
+namespace MVPDemo.View {
+    public partial class OrderTimeRangeQueryView : Form, IOrderTimeRangeQueryView {
         private OrderTimeRangeQueryPresenter _presenter;
 
-        public OrderTimeRangeQueryView()
-        {
+        public OrderTimeRangeQueryView() {
             InitializeComponent();
         }
 
         #region IOrderTimeRangeQueryView Members
 
-        public DateTime SearchQueryFrom
-        { 
-            get
-            {
-                return Convert.ToDateTime (txtFrom.Text);
-            }
-        }
-        public DateTime SearchQueryTo 
-        { 
-            get
-            {
-                return Convert.ToDateTime(txtTo.Text);
-            }
+        public DateTime SearchQueryFrom {
+            get { return Convert.ToDateTime(txtFrom.Text); }
         }
 
-        public void ShowView()
-        {
-            this.Show();
+        public DateTime SearchQueryTo {
+            get { return Convert.ToDateTime(txtTo.Text); }
         }
 
-        public void CloseView()
-        {
-            this.Hide();
+        public void ShowView() {
+            Show();
         }
+
+        public void CloseView() {
+            Hide();
+        }
+
         #endregion
 
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
+        private void btnSubmit_Click(object sender, EventArgs e) {
             _presenter.OnQuerySubmitted();
         }
 
-        private void OrderTimeRangeQueryView_Load(object sender, EventArgs e)
-        {
+        private void OrderTimeRangeQueryView_Load(object sender, EventArgs e) {
             _presenter = new OrderTimeRangeQueryPresenter(this);
         }
-
     }
 }

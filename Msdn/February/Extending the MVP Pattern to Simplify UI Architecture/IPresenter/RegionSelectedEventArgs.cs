@@ -6,30 +6,19 @@
 // //------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using MVPDemo.UIModel;
 
-namespace MVPDemo.IPresenter
-{
-    public class RegionSelectedEventArgs: EventArgs
-    {
+namespace MVPDemo.IPresenter {
+    public class RegionSelectedEventArgs : EventArgs {
         private Region _selectedRegion;
 
-        public RegionSelectedEventArgs(Region selectedRegion)
-        {
+        public RegionSelectedEventArgs(Region selectedRegion) {
             _selectedRegion = selectedRegion;
         }
 
-        public Region SelectedRegion
-        {
-            get
-            {
-                return _selectedRegion;
-            }
-            set
-            {
+        public Region SelectedRegion {
+            get { return _selectedRegion; }
+            set {
                 if (_selectedRegion == value)
                     return;
                 _selectedRegion = value;

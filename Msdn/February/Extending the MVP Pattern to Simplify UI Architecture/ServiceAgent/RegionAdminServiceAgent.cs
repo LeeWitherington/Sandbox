@@ -5,22 +5,16 @@
 // // All programs contained herein are provided to you "AS IS" without any warranties of any kind.
 // //------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using MVPDemo.UIModel;
 
-namespace MVPDemo.ServiceAgent
-{
-   public class RegionAdminServiceAgent
-    {
-        public List<Region> RetriveRegions()
-        {
+namespace MVPDemo.ServiceAgent {
+    public class RegionAdminServiceAgent {
+        public List<Region> RetriveRegions() {
             //Not to call real service. Mock up data here
-            List<Region> regions = new List<Region>();
+            var regions = new List<Region>();
 
-            Region region = new Region();
+            var region = new Region();
             region.Name = "East Region";
             regions.Add(region);
 
