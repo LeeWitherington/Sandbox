@@ -1,3 +1,0 @@
-<%@ ServiceHost 
-    Factory="System.ServiceModel.Activation.WebScriptServiceHostFactory"
-    Service="Samples.Services.FinanceInfo.FinanceInfoService" %>
