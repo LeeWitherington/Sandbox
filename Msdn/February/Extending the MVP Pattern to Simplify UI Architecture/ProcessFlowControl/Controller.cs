@@ -1,5 +1,7 @@
-﻿using MVPDemo.IPresenter;
+﻿using Microsoft.Practices.Unity;
+using MVPDemo.IPresenter;
 using MVPDemo.Utility;
+
 // //------------------------------------------------------------------------------
 // // Code disclaimer information
 // // This document contains programming examples.
@@ -48,7 +50,7 @@ namespace MVPDemo.ProcessFlowControl {
             IUnityContainer container = CacheSingleton.Instance.GetUnityContainer();
             _orderTimeRangeQueryPresenter = container.Resolve<IOrderTimeRangeQueryPresenter>();
             _orderTimeRangeQueryPresenter.OpenView();
-            container.RegisterInstance<IMainPresenter>(_mainPresenter);
+            container.RegisterInstance(_mainPresenter);
         }
 
         #endregion

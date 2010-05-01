@@ -1,0 +1,12 @@
+USE [MyShopEvents]
+DELETE FROM [Events]
+DELETE FROM [EventProviders]
+
+USE [MyShopReadModel]
+DELETE FROM [ShoppingCartItems]
+DELETE FROM [ShoppingCarts]
+DELETE FROM [Products]
+DELETE FROM [UserRoles]
+DELETE FROM [Users]
+DELETE FROM [Visits]
+DELETE FROM [Visitors]

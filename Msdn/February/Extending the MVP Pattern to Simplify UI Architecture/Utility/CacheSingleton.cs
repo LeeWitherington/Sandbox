@@ -6,11 +6,13 @@
 // //------------------------------------------------------------------------------
 
 using System.Configuration;
+using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.Configuration;
 
 namespace MVPDemo.Utility {
     public sealed class CacheSingleton {
         private static readonly CacheSingleton instance = new CacheSingleton();
-        private IUnityContainer container = null;
+        private IUnityContainer container;
 
         private CacheSingleton() {}
 

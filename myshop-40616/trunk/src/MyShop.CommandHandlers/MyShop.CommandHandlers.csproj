@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2BFCDABE-EC25-4B6D-B984-835A4E6FA7AC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyShop.CommandHandlers</RootNamespace>
+    <AssemblyName>MyShop.CommandHandlers</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoMapping\ActionFactory.cs" />
+    <Compile Include="AutoMapping\AutoMapperConfiguration.cs" />
+    <Compile Include="AutoMapping\AutoMappingCommandHandler.cs" />
+    <Compile Include="AutoMapping\AutoMappingException.cs" />
+    <Compile Include="AutoMapping\MappingForCommandNotFoundException.cs" />
+    <Compile Include="AutoMapping\Actions\ObjectCreationCommandInfo.cs" />
+    <Compile Include="AutoMapping\Actions\DirectMethodAction.cs" />
+    <Compile Include="AutoMapping\Actions\DirectMethodCommandInfo.cs" />
+    <Compile Include="AutoMapping\CommandMappingException.cs" />
+    <Compile Include="AutoMapping\Actions\IAutoMappedAction.cs" />
+    <Compile Include="AutoMapping\Actions\ObjectCreationAction.cs" />
+    <Compile Include="CommandHandler.cs" />
+    <Compile Include="MyShopCommandHandlerRegister.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyShop.Bus.CommandBus\MyShop.Bus.CommandBus.csproj">
+      <Project>{8D8C7BFD-C9EA-4612-A2C3-A41FC57E7411}</Project>
+      <Name>MyShop.Bus.CommandBus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyShop.Bus\MyShop.Bus.csproj">
+      <Project>{3532F87F-7134-462E-B2DE-18243E25A2D7}</Project>
+      <Name>MyShop.Bus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyShop.Bus.EventBus\MyShop.Bus.EventBus.csproj">
+      <Project>{124FCC83-6F2D-4274-8886-ED2A3024CA8D}</Project>
+      <Name>MyShop.Bus.EventBus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyShop.Commands\MyShop.Commands.csproj">
+      <Project>{E48882A9-3E4C-4C4F-8AB4-0484595C32BC}</Project>
+      <Name>MyShop.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyShop.Domain\MyShop.Domain.csproj">
+      <Project>{2CD04BD2-AF19-473E-945B-3F4B03507ED9}</Project>
+      <Name>MyShop.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyShop.EventStorage\MyShop.EventStorage.csproj">
+      <Project>{D43AD590-B3CD-4B5E-BB4B-9649CED53632}</Project>
+      <Name>MyShop.EventStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyShop.Events\MyShop.Events.csproj">
+      <Project>{CBFCD075-1896-493C-9B52-1747BFDF56EE}</Project>
+      <Name>MyShop.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyShop.Shared\MyShop.Shared.csproj">
+      <Project>{32038E37-D951-4EBA-B9CE-A83ABD89B009}</Project>
+      <Name>MyShop.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
